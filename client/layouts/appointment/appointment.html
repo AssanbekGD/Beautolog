@@ -1,0 +1,50 @@
+<template name="appointment">
+  <div class="com-sm-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">
+          Прием пациента: {{patientName}}
+          <a href="#" id="history-link"> | История услуг</a>
+          <a href="#" id="cancel-event-link"> | Отменить прием</a>
+        </h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form id="create-appointment-form" role="form">
+        <div class="box-body">
+          <div class="row treatment-group">
+            <h4 class="col-sm-12">Услуга: 1</h4>
+            <div class="form-group col-sm-5">
+              <label>Услуга</label>
+              <select disabled required class="form-control diagnoses-select2 diagnoses-list" multiple="multiple" data-placeholder="выберите диагноз" style="width: 100%;">
+                {{#each diagnoses}}
+                <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="form-group col-sm-5">
+              <label>Прическа</label>
+              <select disabled required class="form-control treatments-select2 treatments-list" multiple="multiple" data-placeholder="выберите лечение" style="width: 100%;">
+                {{#each treatments}}
+                <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button id="add-treatment-group-button" class="btn btn-warning">
+            Добавить лечение <i class="fa fa-plus-square"></i>
+          </button>
+        </div>
+        <div id="total" class="col-sm-20 box-footer">Итога:</div>
+        <div class="box-footer">
+          <button id="start-button" class="btn btn-primary">Начать</button>
+        </div>
+        <div class="box-footer">
+          <button id="finish-button" type="submit" class="btn btn-danger">Закончить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>

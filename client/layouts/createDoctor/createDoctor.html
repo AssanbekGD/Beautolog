@@ -1,0 +1,87 @@
+<template name="createDoctor">
+  <section class="content-header">
+      <h1 class="align-center">
+
+      </h1>
+  </section>
+  <section class="content">
+    <div class="col-sm-10 col-sm-offset-1">
+      <form id="cd-form" action="#" method="post">
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Личные данные врача</h3>
+          </div>
+          <div class="box-body">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
+              <input required id="cd-phone" type="text" class="form-control" placeholder="+7 700 123 45 67">
+            </div>
+            <br />
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input required id="cd-name" type="text" class="form-control" placeholder="Имя">
+            </div>
+            <br />
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input required id="cd-surname" type="text" class="form-control" placeholder="Фамилия">
+            </div>
+            <br />
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+              <input required id="cd-email" type="text" class="form-control" placeholder="ivanov@mail.ru">
+            </div>
+            <br />
+
+            <br />
+            <div class="form-group">
+              <label>Выберите тип врача</label>
+              <select id="cd-master-type" class="form-control">
+                {{#each masterTypes}}
+                <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="pull-right btn btn-primary">Добавить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="pull-right  form-group">
+    <form >
+    <div><input id="search" class="form-control" placeholder="Search"></div>
+    </form>
+  </div>
+    <div class="box-body">
+      <table class="table table-bordered">
+        <tbody ><tr>
+          <!-- <th></th> -->
+          <th style="width: 10px">№</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Телефон</th>
+          <th>Email</th>
+          <th>Тип</th>
+        </tr>
+        {{#each doctors}}
+        <tr class="doctor">
+          <!-- <td><input type="radio"></td>   -->
+          <td >{{incIndex @index}}</td>
+          <td contenteditable>{{name}}</td>
+          <td contenteditable>{{surname}}</td>
+          <td contenteditable>{{phone}}</td>
+          <td contenteditable>{{email}}</td>
+          <td contenteditable>{{getMasterType masterType}}</td>
+
+
+          <button class="pull-right btn btn-primary deleteDoctor" >Удалить</button>
+        </tr>
+           {{/each}}
+      </tbody> </table>
+
+
+     </div>
+  </section>
+</template>

@@ -1,0 +1,64 @@
+<template name="patientHistory">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title"><strong>Пациент: </strong>{{patientName}}</h3>
+    </div>
+    {{#each appointments}}
+    <div class="panel-group" id="accordion{{@index}}" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title row">
+            <a role="button" class="row" data-toggle="collapse" data-parent="#accordion{{@index}}" href="#collapseOne{{@index}}" aria-expanded="true" aria-controls="collapseOne{{@index}}">
+              <div class="info-group col-sm-3">
+                <strong><i class="fa fa-user-md margin-r-5"></i> Лечащий врач:</strong>
+                <span class="text-muted">
+                  {{getDoctorName doctorId}};
+                </span>
+              </div>
+              <div class="info-group col-sm-3">
+                <strong><i class="fa fa-clock-o margin-r-5"></i> Длительность:</strong>
+                <span>
+                  <h4 class="label label-info">{{getAppointmentDuration startTime endTime}}</h4>
+                </span>
+              </div>
+              <div class="info-group col-sm-3">
+                <strong><i class="fa fa-money  margin-r-5"></i> Итого:</strong>
+                <span>
+                  <h4 class="label label-info"></h4>
+                </span>
+              </div>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne{{@index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+
+            <hr>
+          {{#each treatmentGroups}}
+            <div class="row">
+              <div class="info-group col-sm-4">
+                <strong><i class="fa fa-user-md margin-r-5"></i> Диагноз(ы):</strong>
+                {{#each diagnosis in diagnoses}}
+                <span class="text-muted">
+                  {{getDiagnosisName diagnosis}}
+                </span>
+                {{/each}}
+              </div>
+              <div class="info-group col-sm-4">
+                <strong><i class="fa fa-user-md margin-r-5"></i> Лечение(я):</strong>
+                {{#each treatment in treatments}}
+                <span class="text-muted">
+                  {{getTreatmentName treatment}}
+                </span>
+                {{/each}}
+              </div>
+            </div>
+            <hr>
+          {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>

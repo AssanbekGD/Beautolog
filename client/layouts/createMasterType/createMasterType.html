@@ -1,0 +1,41 @@
+<template name="createMasterType">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Склад</h3>
+    </div>
+    <form role="form" id="cd-form">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="cd-diagnosis-name">Тип</label>
+          <input required type="text" class="form-control" id="cd-MasterType-name" placeholder="краска">
+        </div>
+        <br />
+        <div class="box-footer">
+          <button id="cd-submit" type="submit" class="btn btn-primary">Создать</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="box-body">
+    <div class="pull-right  form-group">
+    <form >
+      <div><input id="search" class="form-control" placeholder="Search"></div>
+    </form>
+
+  </div>
+    <table class="table table-bordered">
+      <tbody><tr>
+        <th style="width: 10px">№</th>
+        <th>Тип</th>
+      </tr>
+      {{#each masterTypes}}
+      <tr>
+        <td>{{incIndex @index}}</td>
+        <td class="name" contenteditable>{{name}}</td>
+          <button class="pull-right btn btn-primary deleteMasterType" >Удалить</button>
+          <button class="pull-right btn btn-primary editeMasterType" >Изменить</button>
+      </tr>
+      {{/each}}
+    </tbody></table>
+  </div>
+</template>

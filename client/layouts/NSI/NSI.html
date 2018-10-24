@@ -1,0 +1,48 @@
+<template name="NSI">
+  <div class="box box-primary">
+    <ul class="sidebar-menu">
+
+
+      <li class="{{isActivePath '/createResource'}}">
+        <a href="/createResource">
+          <i class="fa fa-archive"></i> <span>Управление ресурсами</span>
+        </a>
+      </li>
+
+      <li class="{{isActivePath '/createDoctor'}}">
+        <a href="/createDoctor">
+          <i class="fa fa-user-plus"></i> <span>Добавить мастера</span>
+        </a>
+      </li>
+
+      <!--<li class="{{isActivePath '/createDoctorType'}}">
+        <a href="/createDoctorType">
+          <i class="fa fa-users"></i> <span>Добавить тип</span>
+        </a>
+      </li>-->
+
+      <li class="{{isActivePath '/createMasterType'}}">
+        <a href="/createMasterType">
+          <i class="fa fa-users"></i> <span>Добавить тип мастера</span>
+        </a>
+      </li>
+
+
+     <li class="{{isActivePath '/createTreatment'}}">
+        <a href="/createTreatment">
+          <i class="fa fa-medkit"></i> <span>Добавить прическа</span>
+        </a>
+      </li>
+      <li class="{{isActivePath '/createDiagnosis'}}">
+        <a href="/createDiagnosis">
+          <i class="fa fa-medkit"></i> <span>Добавить диагноз</span>
+        </a>
+      </li>
+
+
+
+
+
+    </ul>
+  </div>
+</template>

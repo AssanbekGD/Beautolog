@@ -1,0 +1,46 @@
+<template name="createResource">
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Склад</h3>
+    </div>
+    <form role="form" id="cd-form">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="cd-resource-name">Название</label>
+          <input required type="text" class="form-control" id="cd-resource-name" placeholder="краска">
+        </div>
+        <br />
+        <div class="form-group">
+          <input required id="cd-resource-sht" type="text" class="form-control" placeholder="ШТ">
+        </div>
+        <div class="box-footer">
+          <button id="cd-submit" type="submit" class="btn btn-primary">Создать</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="box-body">
+    <div class="pull-right  form-group">
+    <form >
+      <div><input id="search" class="form-control" placeholder="Search"></div>
+    </form>
+
+  </div>
+    <table class="table table-bordered">
+      <tbody><tr>
+        <th style="width: 10px">№</th>
+        <th>Ресурсы</th>
+        <th>ШТ</th>
+      </tr>
+      {{#each resource}}
+      <tr>
+        <td>{{incIndex @index}}</td>
+        <td class="name" contenteditable>{{name}}</td>
+          <td  class="sht"  contenteditable>{{sht}}</td>
+          <button class="pull-right btn btn-primary deleteResource" >Удалить</button>
+          <button class="pull-right btn btn-primary editResource" >Изменить</button>
+      </tr>
+      {{/each}}
+    </tbody></table>
+  </div>
+</template>

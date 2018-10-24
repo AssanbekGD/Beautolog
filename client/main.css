@@ -1,0 +1,39 @@
+/* CSS declarations go here */
+.content, .content-wrapper, .skin-blue, .wrapper, .body, #__blaze-root
+{
+  height: 200vh;
+}
+
+.red-border
+{
+  border: 1px solid red !important;
+}
+
+.reactive-table-options
+{
+  opacity: 0;
+}
+
+.greyBackground
+{
+  background-color: #e4e4e4;
+}
+
+.treatment-group
+{
+  padding: 2em 0em;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.teeth-shape-table
+{
+  border-radius: 10px;
+}
+
+.teeth-shape-table td
+{
+  width: 3em;
+  text-align: center;
+  padding: 0.2em;
+}
