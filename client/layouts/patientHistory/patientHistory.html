@@ -1,7 +1,7 @@
 <template name="patientHistory">
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title"><strong>Пациент: </strong>{{patientName}}</h3>
+      <h3 class="box-title"><strong>Клиент: </strong>{{patientName}}</h3>
     </div>
     {{#each appointments}}
     <div class="panel-group" id="accordion{{@index}}" role="tablist" aria-multiselectable="true">
@@ -10,7 +10,7 @@
           <h4 class="panel-title row">
             <a role="button" class="row" data-toggle="collapse" data-parent="#accordion{{@index}}" href="#collapseOne{{@index}}" aria-expanded="true" aria-controls="collapseOne{{@index}}">
               <div class="info-group col-sm-3">
-                <strong><i class="fa fa-user-md margin-r-5"></i> Лечащий врач:</strong>
+                <strong><i class="fa fa-user margin-r-5"></i> Мастер :</strong>
                 <span class="text-muted">
                   {{getDoctorName doctorId}};
                 </span>
@@ -37,21 +37,21 @@
           {{#each treatmentGroups}}
             <div class="row">
               <div class="info-group col-sm-4">
-                <strong><i class="fa fa-user-md margin-r-5"></i> Диагноз(ы):</strong>
-                {{#each diagnosis in diagnoses}}
+                <strong><i class="fa fa-clipboard margin-r-5"></i> Услуга(и):</strong>
+                {{#each service in services}}
                 <span class="text-muted">
-                  {{getDiagnosisName diagnosis}}
+                  {{getServiceName service}}
                 </span>
                 {{/each}}
               </div>
-              <div class="info-group col-sm-4">
-                <strong><i class="fa fa-user-md margin-r-5"></i> Лечение(я):</strong>
+              <!--<div class="info-group col-sm-4">
+                <strong><i class="fa fa-user-md margin-r-5"></i> </strong>
                 {{#each treatment in treatments}}
                 <span class="text-muted">
                   {{getTreatmentName treatment}}
                 </span>
                 {{/each}}
-              </div>
+              </div> -->
             </div>
             <hr>
           {{/each}}

@@ -1,11 +1,14 @@
-import './patientHistory.html';
+import './Archive.html';
 import {Template} from 'meteor/templating';
+import {Resource} from '../../../api/resource.js';
+import {ReactiveDict} from 'meteor/reactive-dict';
 import {Patients} from '../../../api/patients.js';
 import {Appointments} from '../../../api/appointments.js';
 import {Services} from '../../../api/services.js';
 import {Doctors} from '../../../api/doctors.js';
 
-Template.patientHistory.onRendered(function patientHistoryOnRendered(){
+
+Template.Archive.onRendered(function ArchiveOnRendered(){
   Session.set('patientId', FlowRouter.getParam('patientId'));
   Meteor.subscribe('patients');
   Meteor.subscribe('appointments', function(err){
@@ -46,37 +49,10 @@ Template.patientHistory.helpers({
   {
     return Services.findOne({_id}).name;
   },
-  getServicePrice(_id)
-  {
-    return Services.findOne({_id}).price;
-  },
-  getTreatmentName(_id)
-  {
-    return Treatments.findOne({_id}).name;
-  },
+
   getDoctorName(_id)
   {
     const doctor = Doctors.findOne({_id});
     return `${doctor.name} ${doctor.surname}`;
   },
-  getAppointmentDuration(start, end)
-  {
-    const startTime = moment(start),
-          endTime = moment(end);
-
-    return beautifyMilliseconds(endTime.diff(startTime));
-  },
-  isEven(index)
-  {
-    return index % 2;
-  }
 });
-
-function beautifyMilliseconds(ms)
-{
-  const hours = parseInt(ms / 3600000),
-        tempms = ms % 3600000,
-        minutes = parseInt(tempms / 60000);
-
-  return `${hours} часов, ${minutes} минут`;
-}

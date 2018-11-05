@@ -1,13 +1,13 @@
-import './createDoctor.html';
+import './createMaster.html';
 
 import {Template} from 'meteor/templating';
-import {Doctors} from '../../../api/doctors.js';
-import {MasterTypes} from '../../../api/masterTypes.js';
 import {Masters} from '../../../api/masters.js';
+import {MasterTypes} from '../../../api/masterTypes.js';
+
 
 Meteor.subscribe('doctorTypes');
 
-Template.createDoctor.helpers({
+Template.createMaster.helpers({
   masterTypes()
   {
     return MasterTypes.find();
@@ -17,9 +17,9 @@ Template.createDoctor.helpers({
     masterType = MasterTypes.findOne({_id});
     return masterType.name;
   },
-  doctors()
+  masters()
   {
-    return Doctors.find();
+    return Masters.find();
   },
   incIndex(i)
   {
@@ -31,7 +31,7 @@ Template.createDoctor.helpers({
 
 
 
-Template.createDoctor.events({
+Template.createMaster.events({
   'submit #cd-form'(e, t)
   {
     e.preventDefault();
@@ -49,7 +49,7 @@ Template.createDoctor.events({
             masterType: $masterType.val()
           };
 
-    Meteor.call('doctors.insert', data, function(err){
+    Meteor.call('masters.insert', data, function(err){
       if(err)
       {
         toastr.error(err.reason);
@@ -69,9 +69,9 @@ Template.createDoctor.events({
 
 });
 
-Template.createDoctor.events({
-  'click .deleteDoctor': function (event,) {
-  Meteor.call('doctors.delete', this._id, function(err, result){
+Template.createMaster.events({
+  'click .deleteMaster': function (event,) {
+  Meteor.call('masters.delete', this._id, function(err, result){
     if(err){
       toastr.error(err.reason);
     }
@@ -83,14 +83,14 @@ Template.createDoctor.events({
 });
 
 
-Template.createDoctor.helpers({
-  doctors: function () {
+Template.createMaster.helpers({
+  masters: function () {
     var regexp = new RegExp(Session.get('search/keyword'), 'i');
-    return Doctors.find({name: regexp});
+    return Masters.find({name: regexp});
   }
 });
 
-Template.createDoctor.events({
+Template.createMaster.events({
   'keyup #search': function(event) {
     Session.set('search/keyword', event.target.value);
   }

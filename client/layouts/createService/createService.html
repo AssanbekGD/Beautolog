@@ -1,19 +1,22 @@
-<template name="createDiagnosis">
+<template name="createService">
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Добавьте диагноз</h3>
+      <h3 class="box-title">Услуги</h3>
     </div>
     <form role="form" id="cd-form">
       <div class="box-body">
         <div class="form-group">
-          <label for="cd-diagnosis-name">Название</label>
-          <input required type="text" class="form-control" id="cd-diagnosis-name" placeholder="Пульпит">
+          <label for="cd-service-name">Название</label>
+          <input required type="text" class="form-control" id="cd-service-name" placeholder="маникюр">
+        </div>
+        <br />
+        <div class="form-group">
+          <input required id="cd-service-price" type="text" class="form-control" placeholder="цена">
         </div>
         <div class="box-footer">
           <button id="cd-submit" type="submit" class="btn btn-primary">Создать</button>
         </div>
       </div>
-      
     </form>
   </div>
   <div class="box-body">
@@ -26,14 +29,16 @@
     <table class="table table-bordered">
       <tbody><tr>
         <th style="width: 10px">№</th>
-        <th>Диагноз</th>
+        <th>Услуги</th>
+        <th>Цена</th>
       </tr>
-      {{#each diagnoses}}
+      {{#each services}}
       <tr>
         <td>{{incIndex @index}}</td>
         <td class="name" contenteditable>{{name}}</td>
-<button class="pull-right btn btn-primary deleteDiagnos" >Удалить</button>
-          <button class="pull-right btn btn-primary editDiagnos" >Изменить</button>
+          <td  class="price"  contenteditable>{{price}}</td>
+          <button class="pull-right btn btn-primary deleteService" >Удалить</button>
+          <button class="pull-right btn btn-primary editService" >Изменить</button>
       </tr>
       {{/each}}
     </tbody></table>

@@ -1,4 +1,4 @@
-<template name="createDoctor">
+<template name="createMaster">
   <section class="content-header">
       <h1 class="align-center">
 
@@ -9,7 +9,7 @@
       <form id="cd-form" action="#" method="post">
         <div class="box box-info">
           <div class="box-header with-border">
-            <h3 class="box-title">Личные данные мастера</h3>
+            <h3 class="box-title">Личные данные врача</h3>
           </div>
           <div class="box-body">
             <div class="input-group">
@@ -35,7 +35,7 @@
 
             <br />
             <div class="form-group">
-              <label>Выберите тип мастера</label>
+              <label>Выберите тип врача</label>
               <select id="cd-master-type" class="form-control">
                 {{#each masterTypes}}
                 <option value="{{_id}}">{{name}}</option>
@@ -66,7 +66,7 @@
           <th>Тип</th>
         </tr>
         {{#each doctors}}
-        <tr class="doctor">
+        <tr class="master">
           <!-- <td><input type="radio"></td>   -->
           <td >{{incIndex @index}}</td>
           <td contenteditable>{{name}}</td>
@@ -76,7 +76,7 @@
           <td contenteditable>{{getMasterType masterType}}</td>
 
 
-          <button class="pull-right btn btn-primary deleteDoctor" >Удалить</button>
+          <button class="pull-right btn btn-primary deleteMaster" >Удалить</button>
         </tr>
            {{/each}}
       </tbody> </table>

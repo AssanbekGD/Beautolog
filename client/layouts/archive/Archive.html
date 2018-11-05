@@ -1,0 +1,45 @@
+<template name="Archive">
+  <section class="content-header">
+      <h1 class="align-center">
+
+      </h1>
+  </section>
+  <section class="content">
+
+    <div class="pull-right  form-group">
+    <form >
+    <div><input id="search" class="form-control" placeholder="Search"></div>
+    </form>
+  </div>
+    <div class="box-body">
+      <table class="table table-bordered">
+        <tbody ><tr>
+          <!-- <th></th> -->
+          <th style="width: 10px">№</th>
+          <th>ФИО</th>
+          <th>Телефон</th>
+          <th>Мастер</th>
+          <th>Услуга</th>
+          <th>Итога</th>
+
+        </tr>
+            {{#each resource}}
+        <tr>
+          <td>{{incIndex @index}}</td>
+          <td class="name" >{{getDoctorName doctorId}};</td>
+            <td  class="phone"  contenteditable>{{sht}}</td>
+            <td class="master" contenteditable>{{name}}</td>
+              <td  class="service"  contenteditable>{{sht}}</td>
+              <td class="price" contenteditable>{{name}}</td>
+
+          <!-- <td><input type="radio"></td>   -->
+
+
+        </tr>
+           {{/each}}
+      </tbody> </table>
+
+
+     </div>
+  </section>
+</template>

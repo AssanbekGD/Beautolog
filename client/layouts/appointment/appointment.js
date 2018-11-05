@@ -1,9 +1,8 @@
 import './appointment.html';
 import {Template} from 'meteor/templating';
 import {Patients} from '../../../api/patients.js';
-import {Diagnoses} from '../../../api/diagnoses.js';
-
-import {Treatments} from '../../../api/treatments.js';
+import {Services} from '../../../api/services.js';
+import {Resource} from  '../../../api/resource.js';
 import {Events} from '../../../api/events.js';
 import {Appointments} from '../../../api/appointments.js';
 
@@ -23,38 +22,18 @@ Template.appointment.onRendered(function appointmentOnRendered(){
     }
   });
 
-  Meteor.subscribe('diagnoses', function(err){
+  Meteor.subscribe('services', function(err){
     if(err)
     {
       toastr.error(err.reason);
     }
     else
     {
-      $(".diagnoses-list").select2();
+      $(".services-list").select2();
     }
   });
 
-  Meteor.subscribe('symptoms', function(err){
-    if(err)
-    {
-      toastr.error(err.reason);
-    }
-    else
-    {
-      $("#symptoms-list").select2();
-    }
-  });
 
-  Meteor.subscribe('treatments', function(err){
-    if(err)
-    {
-      toastr.error(err.reason);
-    }
-    else
-    {
-      $(".treatments-list").select2();
-    }
-  });
 
   Meteor.subscribe('events', function(err){
     if(err)
@@ -81,18 +60,12 @@ Template.appointment.helpers({
 
     return `${name} ${surname}`;
   },
-  treatments()
+
+  services()
   {
-    return Treatments.find();
+    return Services.find();
   },
-  diagnoses()
-  {
-    return Diagnoses.find();
-  },
-  symptoms()
-  {
-    return Symptoms.find();
-  },
+
   treatmentGroupIndex(index)
   {
     return index + 1;
@@ -101,18 +74,7 @@ Template.appointment.helpers({
 
 
 Template.appointment.events({
-  'keyup .tooth-cell'(e, t)
-  {
-    let toothName = e.target.getAttribute('data-tooth-name'),
-        status = e.target.innerText,
-        array = toothName.split('-'),
-        part = array[0],
-        index = parseInt(array[1]),
-        teeth = Session.get('teeth');
 
-    teeth[part][index] = status;
-    Session.set('teeth', teeth);
-  },
   'click #start-button'(e, t)
   {
     e.preventDefault();
@@ -143,9 +105,8 @@ Template.appointment.events({
     for(let i = 0, len = $treatmentGroups.length; i < len; i ++)
     {
       treatmentGroups.push({
-        toothNumber: $($treatmentGroups[i]).find('.toothNumber').val(),
-        diagnoses: $($treatmentGroups[i]).find('.diagnoses-list').val(),
-        treatments: $($treatmentGroups[i]).find('.treatments-list').val()
+        services: $($treatmentGroups[i]).find('.services-list').val(),
+
       });
     }
 
@@ -199,6 +160,17 @@ Template.appointment.events({
       }
     });
   },
+  'click #add-service'(e, t)
+  {
+    e.preventDefault();
+
+    let $lastdiagnoseslist = $('.services-list').last(),
+        $ltgClone2 = $lastdiagnoseslist.clone();
+
+        $lastdiagnoseslist.after($ltgClone2);
+        $ltgClone2.find('.select2').remove();
+},
+
   'click #add-treatment-group-button'(e, t)
   {
     e.preventDefault();
@@ -207,7 +179,6 @@ Template.appointment.events({
         $ltgClone = $lastTreatmentGroup.clone();
 
     $lastTreatmentGroup.after($ltgClone);
-    $ltgClone.find('.toothNumber').val('');
     $ltgClone.find('.select2.select2-container').remove();
     $ltgClone.find('select').select2();
 

@@ -46,13 +46,13 @@ FlowRouter.route('/createClinic', {
   }
 });
 
-/*FlowRouter.route('/createDoctorType', {
+FlowRouter.route('/createMaster', {
   action(){
     BlazeLayout.render('mainLayout', {
-      content: 'createDoctorType'
+      content: 'createMaster'
     });
   }
-});*/
+});
 
 FlowRouter.route('/createMasterType', {
   action(){
@@ -110,10 +110,10 @@ FlowRouter.route('/patientHistory/:patientId', {
   }
 });
 
-FlowRouter.route('/createToothStatus', {
+FlowRouter.route('/createService', {
   action(){
     BlazeLayout.render('mainLayout', {
-      content: 'createToothStatus'
+      content: 'createService'
     });
   }
 });
@@ -122,6 +122,14 @@ FlowRouter.route('/Resource', {
   action(){
     BlazeLayout.render('mainLayout', {
       content: 'Resource'
+    });
+  }
+});
+
+FlowRouter.route('/Archive', {
+  action(){
+    BlazeLayout.render('mainLayout', {
+      content: 'Archive'
     });
   }
 });
